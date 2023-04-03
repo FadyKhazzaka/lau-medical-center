@@ -12,9 +12,12 @@ class DoctorScreen extends StatefulWidget {
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-class DoctorScreenState extends State<DoctorScreen> {
+class DoctorScreenState extends State<DoctorScreen
+>
+ {
   int _selectedIndex = 0;
-  static const List<IconData> _icons = [
+  static const List<IconData> _icons = 
+  [
     Icons.home_outlined,
     Icons.search_outlined,
     Icons.notifications_outlined,
@@ -23,7 +26,7 @@ class DoctorScreenState extends State<DoctorScreen> {
   ];
 
   static List<Widget> screens = <Widget>[
-    const StartPage(),
+     StartPage(),
     const Text(
       'Search Screen',
       style: TextStyle(fontSize: 33),

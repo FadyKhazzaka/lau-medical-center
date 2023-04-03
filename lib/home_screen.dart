@@ -22,11 +22,22 @@ class HomeScreenState extends State<HomeScreen> {
   ];
 
   static List<Widget> screens = <Widget>[
-    
- const Text('Hello Doctor', style: TextStyle(fontSize: 33),),
-    const Text('Search Screen', style: TextStyle(fontSize: 33),),
-    const Text('Notifications Screen', style: TextStyle(fontSize: 33),),
-    const Text('Settings Screen', style: TextStyle(fontSize: 33),),
+    const Text(
+      'Hello User',
+      style: TextStyle(fontSize: 33),
+    ),
+    const Text(
+      'Search Screen',
+      style: TextStyle(fontSize: 33),
+    ),
+    const Text(
+      'Notifications Screen',
+      style: TextStyle(fontSize: 33),
+    ),
+    const Text(
+      'Settings Screen',
+      style: TextStyle(fontSize: 33),
+    ),
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,

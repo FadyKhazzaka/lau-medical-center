@@ -1,0 +1,16 @@
+com.example.laumedicalcenter.app-jetified-window-java-1.0.0-beta04-0 /Users/fady/.gradle/caches/transforms-3/006d93cd422dbc43e89591147c2de572/transformed/jetified-window-java-1.0.0-beta04/res
+com.example.laumedicalcenter.app-jetified-play-services-base-18.0.1-1 /Users/fady/.gradle/caches/transforms-3/082fa8f1e076fd76c98f4d760b4e67b1/transformed/jetified-play-services-base-18.0.1/res
+com.example.laumedicalcenter.app-core-1.6.0-2 /Users/fady/.gradle/caches/transforms-3/4ca28c4a71705f8a687c69dda140a277/transformed/core-1.6.0/res
+com.example.laumedicalcenter.app-jetified-annotation-experimental-1.1.0-3 /Users/fady/.gradle/caches/transforms-3/8965c941cf4bee4d72541b965c7c9d39/transformed/jetified-annotation-experimental-1.1.0/res
+com.example.laumedicalcenter.app-jetified-window-1.0.0-beta04-4 /Users/fady/.gradle/caches/transforms-3/dee59bb480020f42d53c2ea15e4501f7/transformed/jetified-window-1.0.0-beta04/res
+com.example.laumedicalcenter.app-jetified-play-services-basement-18.1.0-5 /Users/fady/.gradle/caches/transforms-3/f46b9773282b7a3d38863a46e0e0b5d1/transformed/jetified-play-services-basement-18.1.0/res
+com.example.laumedicalcenter.app-jetified-play-services-auth-20.4.0-6 /Users/fady/.gradle/caches/transforms-3/fd63fa755a0c7f97a7fa210b01829849/transformed/jetified-play-services-auth-20.4.0/res
+com.example.laumedicalcenter.app-debug-7 /Users/fady/Desktop/Flutter/LAU-Medical-Center/android/app/src/debug/res
+com.example.laumedicalcenter.app-main-8 /Users/fady/Desktop/Flutter/LAU-Medical-Center/android/app/src/main/res
+com.example.laumedicalcenter.app-pngs-9 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/app/generated/res/pngs/debug
+com.example.laumedicalcenter.app-resValues-10 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/app/generated/res/resValues/debug
+com.example.laumedicalcenter.app-rs-11 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/app/generated/res/rs/debug
+com.example.laumedicalcenter.app-mergeDebugResources-12 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.example.laumedicalcenter.app-mergeDebugResources-13 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.example.laumedicalcenter.app-merged_res-14 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/app/intermediates/merged_res/debug
+com.example.laumedicalcenter.app-packaged_res-15 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/smart_auth/intermediates/packaged_res/debug

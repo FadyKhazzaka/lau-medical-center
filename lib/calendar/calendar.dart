@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laumedicalcenter/calendar/complex_example.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 class StartPage extends StatefulWidget {
   const StartPage({super.key});
@@ -35,3 +36,26 @@ class _StartPageState extends State<StartPage> {
     );
   }
 }
+
+
+// class StartPage extends StatefulWidget {
+//    const StartPage({super.key});
+// // DateTime today = DateTime.now();
+//   @override
+//   State<StartPage> createState() => _StartPageState();
+  
+// }
+
+// class _StartPageState extends State<StartPage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         Container(
+//           child: TableCalendar(
+//               focusedDay: DateTime.now(), firstDay: DateTime.utc(2010, 10, 15), lastDay: DateTime.utc(2030, 3, 15)),
+//         )
+//       ],
+//     );
+//   }
+// }

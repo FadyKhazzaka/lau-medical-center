@@ -14,19 +14,12 @@ class SignupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Stack(
-        children: [
-          Column(
-            children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.transparent, Colors.white.withOpacity(0.7)],
-                  ),
-                ),
-                child: Padding(
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            Column(
+              children: <Widget>[
+                Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,10 +29,7 @@ class SignupPage extends StatelessWidget {
                         'https://www.laumcrh.com/images/logo.png',
                         fit: BoxFit.contain,
                       ),
-                      // CachedNetworkImage(
-                      //   imageUrl: 'https://www.laumcrh.com/images/logo.png',
-                      //   fit: BoxFit.contain,
-                      // ),
+                    
                       const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.all(16.0),
@@ -146,10 +136,10 @@ class SignupPage extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
