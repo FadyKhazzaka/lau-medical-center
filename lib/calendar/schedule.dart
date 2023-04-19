@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:laumedicalcenter/login/login_screen.dart';
 
 class Appointments extends StatelessWidget {
   final List<Map<String, dynamic>> selectedEvents;
@@ -91,13 +92,13 @@ class Appointments extends StatelessWidget {
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),
               onTap: () {
-                // Navigator.of(context).pushReplacement(
-                //   MaterialPageRoute(
-                //     builder: (BuildContext context) {
-                //       return const DoctorProfileList();
-                //     },
-                //   ),
-                // );
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return  LoginScreen();
+                    },
+                  ),
+                );
               },
             ),
           ],

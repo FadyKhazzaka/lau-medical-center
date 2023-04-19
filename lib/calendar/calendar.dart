@@ -90,19 +90,27 @@ class _CalendarPageState extends State<CalendarPage> {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: const Text('Cancel'),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF11574A), // set background color to green
+            ),
+            child: const Text('Cancel' , style: TextStyle(color: Colors.white),),
           ),
           ElevatedButton(
-            onPressed: () {
-              setState(() {
-                final eventList = events[today] ?? [];
-                eventList.add(eventData);
-                events[today] = eventList;
-              });
-              Navigator.of(context).pop();
-            },
-            child: const Text('Save'),
-          ),
+              onPressed: () {
+                setState(() {
+                  final eventList = events[today] ?? [];
+                  eventList.add(eventData);
+                  events[today] = eventList;
+                });
+                Navigator.of(context).pop();
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF11574A), // set background color to green
+              ),
+              child: const Text(
+                'Save',
+                style: TextStyle(color: Colors.white),
+              )),
         ],
       ),
     );
@@ -120,89 +128,93 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     final selectedEvents = events[today] ?? [];
 
-    return Column(
-      children: [
-        TableCalendar(
-          focusedDay: today,
-          firstDay: DateTime.utc(2010, 10, 15),
-          lastDay: DateTime.utc(2030, 3, 15),
-          rowHeight: 40,
-          headerStyle: const HeaderStyle(
-            formatButtonVisible: false,
-            titleCentered: true,
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          TableCalendar(
+            focusedDay: today,
+            firstDay: DateTime.utc(2010, 10, 15),
+            lastDay: DateTime.utc(2030, 3, 15),
+            rowHeight: 40,
+            headerStyle: const HeaderStyle(
+              formatButtonVisible: false,
+              titleCentered: true,
+            ),
+            availableGestures: AvailableGestures.all,
+            onDaySelected: _onDaySelected,
+            selectedDayPredicate: (day) => isSameDay(day, today),
           ),
-          availableGestures: AvailableGestures.all,
-          onDaySelected: _onDaySelected,
-          selectedDayPredicate: (day) => isSameDay(day, today),
-        ),
-        const SizedBox(height: 20),
-        SizedBox(
-          width: 250,
-          height: 45,
-          child: ElevatedButton.icon(
-            onPressed: _addEvent,
-            icon: const Icon(Icons.add, size: 20),
-            label: const Text(
-              'Book your Appointment',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.0,
+          const SizedBox(height: 20),
+          SizedBox(
+            width: 250,
+            height: 45,
+            child: ElevatedButton.icon(
+              onPressed: _addEvent,
+              icon: const Icon(Icons.add, size: 20),
+              label: const Text(
+                'Book your Appointment',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.0,
+                ),
               ),
-            ),
-            style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(const Color(0xFF11574A)),
-              padding: MaterialStateProperty.all<EdgeInsets>(
-                const EdgeInsets.symmetric(vertical: 12.0),
-              ),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(const Color(0xFF11574A)),
+                padding: MaterialStateProperty.all<EdgeInsets>(
+                  const EdgeInsets.symmetric(vertical: 12.0),
+                ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        const SizedBox(height: 12),
-        if (selectedEvents.isNotEmpty) ...[
-          const Text('Appointments:', style: TextStyle(fontSize: 18)),
-          const SizedBox(height: 8),
-          for (final event in selectedEvents)
-            Card(
-              color: const Color(0xFF11574A),
-              margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-              child: ListTile(
-                title: Text(
-                  'Name: ${event['name']!}',
-                  style: const TextStyle(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Details: ${event['details']!}',
-                      style: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      'Time: ${event['time']!}',
-                      style: const TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                trailing: IconButton(
-                  color: Colors.red,
-                  icon: const Icon(Icons.delete),
-                  onPressed: () => _removeEvent(event),
+          const SizedBox(height: 12),
+          if (selectedEvents.isNotEmpty) ...[
+            const Text('Appointments:', style: TextStyle(fontSize: 18)),
+            const SizedBox(height: 8),
+            for (final event in selectedEvents)
+              Card(
+                color: const Color(0xFFEDEDED),
+                margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                elevation: 4,
+                shadowColor: Colors.grey,
+                child: ListTile(
+                  title: Text(
+                    'Name: ${event['name']!}',
+                    style: const TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Details: ${event['details']!}',
+                        style: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Time: ${event['time']!}',
+                        style: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  trailing: IconButton(
+                    color: Colors.red,
+                    icon: const Icon(Icons.delete),
+                    onPressed: () => _removeEvent(event),
+                  ),
                 ),
               ),
-            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }
