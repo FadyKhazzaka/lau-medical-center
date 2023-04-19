@@ -1,11 +1,7 @@
-import 'dart:convert';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:laumedicalcenter/calendar/time_class.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
@@ -24,7 +20,6 @@ class _CalendarPageState extends State<CalendarPage> {
       today = day;
     });
   }
-
 
   void _addEvent() async {
     final Map<String, String> eventData = {
@@ -112,104 +107,6 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
     );
   }
-//-------------------------------------------------------------
- 
-//------------------------------------------------------------
-// void _addEvent() async {
-//   final Map<String, String> eventData = {
-//     'name': '',
-//     'details': '',
-//     'time': ''
-//   };
-
-//   await showDialog(
-//     context: context,
-//     builder: (context) => AlertDialog(
-//       title: const Text('Add Event'),
-//       content: SingleChildScrollView(
-//         child: Column(
-//           mainAxisSize: MainAxisSize.min,
-//           children: [
-//             TextField(
-//               decoration: const InputDecoration(
-//                 labelText: 'Full Name',
-//               ),
-//               onChanged: (text) {
-//                 eventData['name'] = text;
-//               },
-//             ),
-//             TextField(
-//               decoration: const InputDecoration(
-//                 labelText: 'Event Details',
-//               ),
-//               onChanged: (text) {
-//                 eventData['details'] = text;
-//               },
-//             ),
-//             DropdownButtonFormField<ReservationTime>(
-//               decoration: const InputDecoration(
-//                 labelText: 'Time',
-//               ),
-//               value: eventData['time'] == ''
-//                   ? null
-//                   : ReservationTime(eventData['time']!),
-//               onChanged: (value) {
-//                 setState(() {
-//                   eventData['time'] = value!.time;
-//                 });
-//               },
-//               items: [
-//                 DropdownMenuItem(
-//                   value: ReservationTime('11:00'),
-//                   child: const Text('11:00 AM'),
-//                 ),
-//                 DropdownMenuItem(
-//                   value: ReservationTime('2:00'),
-//                   child: const Text('2:00 PM'),
-//                 ),
-//                 DropdownMenuItem(
-//                   value: ReservationTime('4:00'),
-//                   child: const Text('4:00 PM'),
-//                 ),
-//                 DropdownMenuItem(
-//                   value: ReservationTime('6:00'),
-//                   child: const Text('6:00 PM'),
-//                 ),
-//               ],
-//             ),
-//           ],
-//         ),
-//       ),
-//       actions: [
-//         TextButton(
-//           onPressed: () {
-//             Navigator.of(context).pop();
-//           },
-//           child: const Text('Cancel'),
-//         ),
-//         ElevatedButton(
-//           onPressed: () async {
-//             final prefs = await SharedPreferences.getInstance();
-//             final eventList = events[today] ?? [];
-//             events[today] = eventList.cast<Map<String, String>>();
-
-//             eventList.add(eventData);
-//             events[today] = eventList;
-
-//             final eventListAsStringList =
-//                 eventList.map((e) => jsonEncode(e)).toList();
-//             await prefs.setStringList(today as String, eventListAsStringList);
-
-//             setState(() {});
-
-//             Navigator.of(context).pop();
-//           },
-//           child: const Text('Save'),
-//         ),
-//       ],
-//     ),
-//   );
-// }
 
   void _removeEvent(Map<String, String> event) {
     setState(() {
@@ -238,35 +135,38 @@ class _CalendarPageState extends State<CalendarPage> {
           onDaySelected: _onDaySelected,
           selectedDayPredicate: (day) => isSameDay(day, today),
         ),
-        const SizedBox(height: 12),
-        Text(
-          'Selected Day = ${today.toString().split(' ')[0]}',
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(
-          height: 15,
-        ),
+        const SizedBox(height: 20),
         SizedBox(
           width: 250,
+          height: 45,
           child: ElevatedButton.icon(
             onPressed: _addEvent,
-            icon: const Icon(Icons.add),
+            icon: const Icon(Icons.add, size: 20),
             label: const Text(
-              'Add Reservation',
+              'Book your Appointment',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
+                letterSpacing: 1.0,
               ),
             ),
             style: ButtonStyle(
               backgroundColor:
                   MaterialStateProperty.all<Color>(const Color(0xFF11574A)),
+              padding: MaterialStateProperty.all<EdgeInsets>(
+                const EdgeInsets.symmetric(vertical: 12.0),
+              ),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
             ),
           ),
         ),
         const SizedBox(height: 12),
         if (selectedEvents.isNotEmpty) ...[
-          const Text('Events:', style: TextStyle(fontSize: 18)),
+          const Text('Appointments:', style: TextStyle(fontSize: 18)),
           const SizedBox(height: 8),
           for (final event in selectedEvents)
             Card(
