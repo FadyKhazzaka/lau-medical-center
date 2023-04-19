@@ -13,4 +13,5 @@ com.example.laumedicalcenter.app-rs-11 /Users/fady/Desktop/Flutter/LAU-Medical-C
 com.example.laumedicalcenter.app-mergeDebugResources-12 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
 com.example.laumedicalcenter.app-mergeDebugResources-13 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
 com.example.laumedicalcenter.app-merged_res-14 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/app/intermediates/merged_res/debug
-com.example.laumedicalcenter.app-packaged_res-15 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/smart_auth/intermediates/packaged_res/debug
+com.example.laumedicalcenter.app-packaged_res-15 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/shared_preferences_android/intermediates/packaged_res/debug
+com.example.laumedicalcenter.app-packaged_res-16 /Users/fady/Desktop/Flutter/LAU-Medical-Center/build/smart_auth/intermediates/packaged_res/debug

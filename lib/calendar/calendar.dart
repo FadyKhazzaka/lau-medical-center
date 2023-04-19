@@ -1,6 +1,11 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:laumedicalcenter/calendar/time_class.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({Key? key}) : super(key: key);
@@ -12,6 +17,7 @@ class CalendarPage extends StatefulWidget {
 class _CalendarPageState extends State<CalendarPage> {
   DateTime today = DateTime.now();
   Map<DateTime, List<Map<String, String>>> events = {};
+  final GlobalKey<ScaffoldState> scaffoldkey = GlobalKey<ScaffoldState>();
 
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
@@ -19,12 +25,13 @@ class _CalendarPageState extends State<CalendarPage> {
     });
   }
 
+//-------------------------------------------------------------
   void _addEvent() async {
     final Map<String, String> eventData = {
       'name': '',
       'details': '',
       'time': ''
-    }; // add 'time' field to eventData
+    };
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -91,7 +98,13 @@ class _CalendarPageState extends State<CalendarPage> {
             child: const Text('Cancel'),
           ),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
+              final prefs = await SharedPreferences.getInstance();
+              final eventList = events[today] ?? [];
+              events[today] = eventList.cast<Map<String, String>>();
+
+              await prefs.setStringList(
+                  today as String, eventList.cast<String>());
               setState(() {
                 final eventList = events[today] ?? [];
                 eventList.add(eventData);
@@ -105,6 +118,102 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
     );
   }
+//------------------------------------------------------------
+// void _addEvent() async {
+//   final Map<String, String> eventData = {
+//     'name': '',
+//     'details': '',
+//     'time': ''
+//   };
+
+//   await showDialog(
+//     context: context,
+//     builder: (context) => AlertDialog(
+//       title: const Text('Add Event'),
+//       content: SingleChildScrollView(
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             TextField(
+//               decoration: const InputDecoration(
+//                 labelText: 'Full Name',
+//               ),
+//               onChanged: (text) {
+//                 eventData['name'] = text;
+//               },
+//             ),
+//             TextField(
+//               decoration: const InputDecoration(
+//                 labelText: 'Event Details',
+//               ),
+//               onChanged: (text) {
+//                 eventData['details'] = text;
+//               },
+//             ),
+//             DropdownButtonFormField<ReservationTime>(
+//               decoration: const InputDecoration(
+//                 labelText: 'Time',
+//               ),
+//               value: eventData['time'] == ''
+//                   ? null
+//                   : ReservationTime(eventData['time']!),
+//               onChanged: (value) {
+//                 setState(() {
+//                   eventData['time'] = value!.time;
+//                 });
+//               },
+//               items: [
+//                 DropdownMenuItem(
+//                   value: ReservationTime('11:00'),
+//                   child: const Text('11:00 AM'),
+//                 ),
+//                 DropdownMenuItem(
+//                   value: ReservationTime('2:00'),
+//                   child: const Text('2:00 PM'),
+//                 ),
+//                 DropdownMenuItem(
+//                   value: ReservationTime('4:00'),
+//                   child: const Text('4:00 PM'),
+//                 ),
+//                 DropdownMenuItem(
+//                   value: ReservationTime('6:00'),
+//                   child: const Text('6:00 PM'),
+//                 ),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//       actions: [
+//         TextButton(
+//           onPressed: () {
+//             Navigator.of(context).pop();
+//           },
+//           child: const Text('Cancel'),
+//         ),
+//         ElevatedButton(
+//           onPressed: () async {
+//             final prefs = await SharedPreferences.getInstance();
+//             final eventList = events[today] ?? [];
+//             events[today] = eventList.cast<Map<String, String>>();
+
+//             eventList.add(eventData);
+//             events[today] = eventList;
+
+//             final eventListAsStringList =
+//                 eventList.map((e) => jsonEncode(e)).toList();
+//             await prefs.setStringList(today as String, eventListAsStringList);
+
+//             setState(() {});
+
+//             Navigator.of(context).pop();
+//           },
+//           child: const Text('Save'),
+//         ),
+//       ],
+//     ),
+//   );
+// }
 
   void _removeEvent(Map<String, String> event) {
     setState(() {
@@ -169,7 +278,7 @@ class _CalendarPageState extends State<CalendarPage> {
               margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
               child: ListTile(
                 title: Text(
-                  event['name']!,
+                  'Name: ${event['name']!}',
                   style: const TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
@@ -177,7 +286,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      event['details']!,
+                      'Details: ${event['details']!}',
                       style: const TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),

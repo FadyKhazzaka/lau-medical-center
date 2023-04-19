@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
           child: 
               Image.network(
                 'https://www.laumcrh.com/images/logo.png',
-                fit: BoxFit.contain,
+                fit: BoxFit.fitWidth,
               ),
           ),
         ),

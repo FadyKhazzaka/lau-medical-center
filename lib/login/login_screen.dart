@@ -115,7 +115,7 @@ class LoginScreen extends StatelessWidget {
                                     if (formKey.currentState!.validate()) {
                                       String name = nameController.text;
                                       String password = passwordController.text;
-                                      if (name == 'fady' && password == 'fady') {
+                                      if (name == 'marc' && password == 'marc') {
                                         Navigator.of(context).pushReplacement(
                                           MaterialPageRoute(
                                             builder: (BuildContext context) {
@@ -160,7 +160,7 @@ class LoginScreen extends StatelessWidget {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (BuildContext context) {
-                                          return SignupPage();
+                                          return const SignupPage();
                                         },
                                       ),
                                     );

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laumedicalcenter/calendar/calendar.dart';
-
-import 'doctors_profile_list.dart';
+import 'package:laumedicalcenter/login/login_screen.dart';
 
 class DoctorScreen extends StatefulWidget {
   const DoctorScreen({Key? key}) : super(key: key);
@@ -11,22 +10,9 @@ class DoctorScreen extends StatefulWidget {
 }
 
 class DoctorScreenState extends State<DoctorScreen> {
-  int _selectedIndex = 0;
-  static const List<IconData> _icons = [
-    Icons.people,
-    Icons.home_outlined,
-  ];
-
   static List<Widget> screens = <Widget>[
-    const DoctorProfileList(),
     const CalendarPage(),
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,27 +22,22 @@ class DoctorScreenState extends State<DoctorScreen> {
         backgroundColor: const Color(0xFF11574A),
         title: const Center(child: Text('LAU')),
         automaticallyImplyLeading: false,
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: screens.elementAt(_selectedIndex),
+        leading: IconButton(
+          icon: const Icon(Icons.logout),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (BuildContext context) {
+                  return LoginScreen();
+                },
+              ),
+            );
+          },
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color(0xFF11574A),
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        type: BottomNavigationBarType.fixed,
-        items: List.generate(
-          _icons.length,
-          (index) => BottomNavigationBarItem(
-            icon: Icon(
-              _icons[index],
-              color: _selectedIndex == index ? Colors.white : Colors.black,
-              size: 30,
-            ),
-            label: '',
-          ),
+      body: const SingleChildScrollView(
+        child: Center(
+          child: CalendarPage(),
         ),
       ),
     );

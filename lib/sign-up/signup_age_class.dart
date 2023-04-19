@@ -10,9 +10,13 @@ class AgeTextField extends StatefulWidget {
 
 class AgeTextFieldState extends State<AgeTextField> {
   final TextEditingController _textEditingController = TextEditingController();
-
-  String _selectedDate = '';
-
+// String?errorText;
+   String _selectedDate = '';
+//  void _onTextFieldClick() {
+//     setState(() {
+//       errorText = null;
+//     });
+//   }
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -54,6 +58,16 @@ class AgeTextFieldState extends State<AgeTextField> {
                         }
                         return null;
                       },
+
+                      // validator: (value) {
+                      //   if (value == null || value == '') {
+                      //     setState(() {
+                      //       errorText = 'Please enter your dob';
+                      //     });
+                      //   }
+                      //   return null;
+                      // },
+
                       decoration: const InputDecoration(
                         suffixIcon: Icon(Icons.calendar_today_outlined),
                         hintText: 'Select your date of birth',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../calendar/calendar_client.dart';
 import '../full-screen/full_screen.dart';
 import '../models/doctor_model_list.dart';
 
@@ -31,9 +32,12 @@ class _DoctorProfileListState extends State<DoctorProfileList> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => FullScreen(imageUrl: doctor.profilePhotoUrl,),
+                          builder: (context) => FullScreen(
+                            imageUrl: doctor.profilePhotoUrl,
+                          ),
                         ),
                       );
+                      
                     },
                     child: CircleAvatar(
                       backgroundImage: NetworkImage(doctor.profilePhotoUrl),
@@ -43,7 +47,13 @@ class _DoctorProfileListState extends State<DoctorProfileList> {
                   subtitle: Text(doctor.subtitle),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
-                    // Navigate to the doctor's profile page
+                   Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>const CalendarClient(
+                          ),
+                        ),
+                      );
                   },
                 ),
                 const Divider(
