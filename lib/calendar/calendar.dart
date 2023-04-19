@@ -25,13 +25,13 @@ class _CalendarPageState extends State<CalendarPage> {
     });
   }
 
-//-------------------------------------------------------------
+
   void _addEvent() async {
     final Map<String, String> eventData = {
       'name': '',
       'details': '',
       'time': ''
-    };
+    }; // add time field to eventData
     await showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -98,13 +98,7 @@ class _CalendarPageState extends State<CalendarPage> {
             child: const Text('Cancel'),
           ),
           ElevatedButton(
-            onPressed: () async {
-              final prefs = await SharedPreferences.getInstance();
-              final eventList = events[today] ?? [];
-              events[today] = eventList.cast<Map<String, String>>();
-
-              await prefs.setStringList(
-                  today as String, eventList.cast<String>());
+            onPressed: () {
               setState(() {
                 final eventList = events[today] ?? [];
                 eventList.add(eventData);
@@ -118,6 +112,8 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
     );
   }
+//-------------------------------------------------------------
+ 
 //------------------------------------------------------------
 // void _addEvent() async {
 //   final Map<String, String> eventData = {
