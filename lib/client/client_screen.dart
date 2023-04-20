@@ -12,7 +12,7 @@ class ClientScreen extends StatefulWidget {
 class ClientScreenState extends State<ClientScreen> {
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF11574A),
         title: const Center(child: Text('LAU-Client')),
@@ -34,8 +34,7 @@ class ClientScreenState extends State<ClientScreen> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             Container(
-              // color: const Color(0xFF11574A),
-              color: Colors.grey,
+              color: const Color(0xFF11574A),
               child: const UserAccountsDrawerHeader(
                 decoration: BoxDecoration(
                   color: Color(0xFF11574A),

@@ -21,6 +21,104 @@ class _CalendarPageState extends State<CalendarPage> {
     });
   }
 
+  //------------------------------------------------------------
+// void _addEvent() async {
+//   final Map<String, String> eventData = {
+//     'name': '',
+//     'details': '',
+//     'time': ''
+//   };
+
+//   await showDialog(
+//     context: context,
+//     builder: (context) => AlertDialog(
+//       title: const Text('Add Event'),
+//       content: SingleChildScrollView(
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             TextField(
+//               decoration: const InputDecoration(
+//                 labelText: 'Full Name',
+//               ),
+//               onChanged: (text) {
+//                 eventData['name'] = text;
+//               },
+//             ),
+//             TextField(
+//               decoration: const InputDecoration(
+//                 labelText: 'Event Details',
+//               ),
+//               onChanged: (text) {
+//                 eventData['details'] = text;
+//               },
+//             ),
+//             DropdownButtonFormField<ReservationTime>(
+//               decoration: const InputDecoration(
+//                 labelText: 'Time',
+//               ),
+//               value: eventData['time'] == ''
+//                   ? null
+//                   : ReservationTime(eventData['time']!),
+//               onChanged: (value) {
+//                 setState(() {
+//                   eventData['time'] = value!.time;
+//                 });
+//               },
+//               items: [
+//                 DropdownMenuItem(
+//                   value: ReservationTime('11:00'),
+//                   child: const Text('11:00 AM'),
+//                 ),
+//                 DropdownMenuItem(
+//                   value: ReservationTime('2:00'),
+//                   child: const Text('2:00 PM'),
+//                 ),
+//                 DropdownMenuItem(
+//                   value: ReservationTime('4:00'),
+//                   child: const Text('4:00 PM'),
+//                 ),
+//                 DropdownMenuItem(
+//                   value: ReservationTime('6:00'),
+//                   child: const Text('6:00 PM'),
+//                 ),
+//               ],
+//             ),
+//           ],
+//         ),
+//       ),
+//       actions: [
+//         TextButton(
+//           onPressed: () {
+//             Navigator.of(context).pop();
+//           },
+//           child: const Text('Cancel'),
+//         ),
+//         ElevatedButton(
+//           onPressed: () async {
+//             final prefs = await SharedPreferences.getInstance();
+//             final eventList = events[today] ?? [];
+//             events[today] = eventList.cast<Map<String, String>>();
+
+//             eventList.add(eventData);
+//             events[today] = eventList;
+
+//             final eventListAsStringList =
+//                 eventList.map((e) => jsonEncode(e)).toList();
+//             await prefs.setStringList(today as String, eventListAsStringList);
+
+//             setState(() {});
+
+//             Navigator.of(context).pop();
+//           },
+//           child: const Text('Save'),
+//         ),
+//       ],
+//     ),
+//   );
+// }
+//------------------------------------------------------------------------
+
   void _addEvent() async {
     final Map<String, String> eventData = {
       'name': '',
@@ -91,7 +189,7 @@ class _CalendarPageState extends State<CalendarPage> {
               Navigator.of(context).pop();
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF11574A), // set background color to green
+              backgroundColor: const Color(0xFF11574A), // set background color 
             ),
             child: const Text('Cancel' , style: TextStyle(color: Colors.white),),
           ),

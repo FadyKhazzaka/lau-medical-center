@@ -69,24 +69,24 @@ class _CalendarClientState extends State<CalendarClient> {
                 // Handle profile option here
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.schedule),
-              title: const Text('Schedule'),
-              onTap: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return Appointments(
-                        removeEvent: (Map<String, dynamic> event) {
-                          // your remove event function logic here
-                        },
-                        selectedEvents: const [],
-                      );
-                    },
-                  ),
-                );
-              },
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.schedule),
+            //   title: const Text('Schedule'),
+            //   onTap: () {
+            //     Navigator.of(context).pushReplacement(
+            //       MaterialPageRoute(
+            //         builder: (BuildContext context) {
+            //           return Appointments(
+            //             removeEvent: (Map<String, dynamic> event) {
+            //               // your remove event function logic here
+            //             },
+            //             selectedEvents: const [],
+            //           );
+            //         },
+            //       ),
+            //     );
+            //   },
+            // ),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),

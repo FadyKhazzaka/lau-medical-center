@@ -58,13 +58,13 @@ class DoctorScreenState extends State<DoctorScreen> {
                 // Handle profile option here
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.schedule),
-              title: const Text('Schedule'),
-              onTap: () {
-                // Handle schedule option here
-              },
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.schedule),
+            //   title: const Text('Schedule'),
+            //   onTap: () {
+            //     // Handle schedule option here
+            //   },
+            // ),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),

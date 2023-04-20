@@ -59,7 +59,7 @@ List<Doctor> doctors = [
   Doctor(
       name: 'Dr. Dafa Treq',
       profilePhotoUrl:
-          'https://media.istockphoto.com/id/1349962218/photo/young-middle-eastern-doctor-man-crossing-hands-looking-aside-blue-background.jpg?s=612x612&w=0&k=20&c=Iq_cVzb7Y26q4K_5q7G9WW_QHH6Mtmxnx8Tcp_A5B2E=',
+          'https://media.istockphoto.com/id/1346711310/photo/portrait-of-smiling-female-doctor-wearing-uniform-standing.jpg?s=612x612&w=0&k=20&c=nPsBL7HwQ7y14HP6J7lcCyKl51X5pPSPGnweXHFzT9o=',
       subtitle: 'doctor specialization'),
   Doctor(
       name: 'Dr. Diana Oil',
