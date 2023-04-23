@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:laumedicalcenter/calendar/calendar.dart';
 import 'package:laumedicalcenter/calendar/schedule.dart';
+import 'package:laumedicalcenter/login/login_screen.dart';
 
 import '../doctor/doctors_profile_list.dart';
 
@@ -30,6 +31,22 @@ class _CalendarClientState extends State<CalendarClient> {
           },
         ),
         actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.email),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+         
+                    return Appointments(
+                      removeEvent: (Map<String, dynamic> event) {},
+                      selectedEvents: const [],
+                    );
+                  },
+                ),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.turn_left),
             onPressed: () {
@@ -69,24 +86,6 @@ class _CalendarClientState extends State<CalendarClient> {
                 // Handle profile option here
               },
             ),
-            // ListTile(
-            //   leading: const Icon(Icons.schedule),
-            //   title: const Text('Schedule'),
-            //   onTap: () {
-            //     Navigator.of(context).pushReplacement(
-            //       MaterialPageRoute(
-            //         builder: (BuildContext context) {
-            //           return Appointments(
-            //             removeEvent: (Map<String, dynamic> event) {
-            //               // your remove event function logic here
-            //             },
-            //             selectedEvents: const [],
-            //           );
-            //         },
-            //       ),
-            //     );
-            //   },
-            // ),
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),
@@ -94,7 +93,7 @@ class _CalendarClientState extends State<CalendarClient> {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (BuildContext context) {
-                      return const DoctorProfileList();
+                      return  LoginScreen();
                     },
                   ),
                 );

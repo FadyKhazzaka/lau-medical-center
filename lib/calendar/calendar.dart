@@ -20,8 +20,7 @@ class _CalendarPageState extends State<CalendarPage> {
       today = day;
     });
   }
-
-  //------------------------------------------------------------
+//------------------------------------------------------------------
 // void _addEvent() async {
 //   final Map<String, String> eventData = {
 //     'name': '',
@@ -189,37 +188,44 @@ class _CalendarPageState extends State<CalendarPage> {
               Navigator.of(context).pop();
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: const Color(0xFF11574A), // set background color 
+              backgroundColor: const Color(0xFF11574A), // set background color
             ),
-            child: const Text('Cancel' , style: TextStyle(color: Colors.white),),
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
           ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  final eventList = events[today] ?? [];
-                  eventList.add(eventData);
-                  events[today] = eventList;
-                });
-                Navigator.of(context).pop();
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF11574A), // set background color to green
-              ),
-              child: const Text(
-                'Save',
-                style: TextStyle(color: Colors.white),
-              )),
+            onPressed: () {
+              setState(() {
+                final eventList = events[today] ?? [];
+                eventList.add(eventData);
+                events[today] = eventList;
+              });
+              Navigator.of(context).pop();
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor:
+                  const Color(0xFF11574A), // set background color to green
+            ),
+            child: const Text(
+              'Save',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
         ],
       ),
     );
   }
 
   void _removeEvent(Map<String, String> event) {
-    setState(() {
-      final eventList = events[today] ?? [];
-      eventList.remove(event);
-      events[today] = eventList;
-    });
+    setState(
+      () {
+        final eventList = events[today] ?? [];
+        eventList.remove(event);
+        events[today] = eventList;
+      },
+    );
   }
 
   @override

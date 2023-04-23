@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:laumedicalcenter/login/login_screen.dart';
+import '../doctor/doctors_profile_list.dart';
 
 class Appointments extends StatelessWidget {
   final List<Map<String, dynamic>> selectedEvents;
@@ -18,7 +17,7 @@ class Appointments extends StatelessWidget {
     return Scaffold(
      appBar: AppBar(
         backgroundColor: const Color(0xFF11574A),
-        title: const Center(child: Text('LAU-Client')),
+        title: const Center(child: Text('LAU-Client-Appoi')),
         automaticallyImplyLeading: false,
         leading: Builder(
           builder: (BuildContext context) {
@@ -30,19 +29,8 @@ class Appointments extends StatelessWidget {
             );
           },
         ),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.turn_left),
-            onPressed: () {
-              // Navigator.of(context).pop(
-              //   MaterialPageRoute(
-              //     builder: (BuildContext context) {
-              //       return const DoctorProfileList();
-              //     },
-              //   ),
-              // );
-            },
-          ),
+        actions: const <Widget>[
+        
         ],
       ),
       drawer: Drawer(
@@ -68,24 +56,6 @@ class Appointments extends StatelessWidget {
               title: const Text('Profile'),
               onTap: () {
                 // Handle profile option here
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.schedule),
-              title: const Text('Schedule'),
-              onTap: () {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return Appointments(
-                        removeEvent: (Map<String, dynamic> event) {
-                          // your remove event function logic here
-                        },
-                        selectedEvents: const [],
-                      );
-                    },
-                  ),
-                );
               },
             ),
             ListTile(

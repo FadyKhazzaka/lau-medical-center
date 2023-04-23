@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laumedicalcenter/sign-up/signup.dart';
+import '../client/home_screen.dart';
 import '../doctor/doctor_page.dart';
 import '../client/client_screen.dart';
 
@@ -119,7 +120,7 @@ class LoginScreen extends StatelessWidget {
                                         Navigator.of(context).pushReplacement(
                                           MaterialPageRoute(
                                             builder: (BuildContext context) {
-                                              return const ClientScreen();
+                                              return const HomeScreen();
                                             },
                                           ),
                                         );

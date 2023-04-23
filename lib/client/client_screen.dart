@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:laumedicalcenter/login/login_screen.dart';
+import '../calendar/schedule.dart';
 import '../doctor/doctors_profile_list.dart';
 
 class ClientScreen extends StatefulWidget {
@@ -27,7 +28,22 @@ class ClientScreenState extends State<ClientScreen> {
             );
           },
         ),
-        actions: const <Widget>[],
+        actions:  <Widget>[ IconButton(
+            icon:const  Icon(Icons.email),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (BuildContext context) {
+         
+                    return Appointments(
+                      removeEvent: (Map<String, dynamic> event) {},
+                      selectedEvents: const [],
+                    );
+                  },
+                ),
+              );
+            },
+          ),],
       ),
       drawer: Drawer(
         child: ListView(
@@ -54,13 +70,7 @@ class ClientScreenState extends State<ClientScreen> {
                 // Handle profile option here
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.schedule),
-              title: const Text('Schedule'),
-              onTap: () {
-                // Handle schedule option here
-              },
-            ),
+           
             ListTile(
               leading: const Icon(Icons.exit_to_app),
               title: const Text('Logout'),
